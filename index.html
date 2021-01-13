@@ -18,6 +18,15 @@
         font-size: 30px;
         color: blue;
     }
+    .new{
+        background-color: coral;
+    }
+    .newV2{
+        background-color:gold;
+    }
+    .newV3{
+        background-color:mediumturquoise;
+    }
 </style>
 <body>
 
@@ -97,6 +106,25 @@
     <hr>
     <div id="setText">
         <p> 得到 純文字 </p>
+    </div>
+    <div>
+        <p id="setInserting">I Say :</p>
+    </div>
+    <br><br>
+    <br><br>
+    <hr>
+    <div>
+        <p id="moveElement">I am <em id="moveTarget">apple</em>. </p>
+    </div>
+    <!-- 把自己包起來 -->
+    <div>
+        <div class="inner">Hello</div>
+        <div class="inner">world</div>
+    </div>
+    <!-- 刪除子節點 --> <hr>
+    <div>
+        <div class="h1">hello</div>
+        <div class="h2">goobye</div>
     </div>
     <br>
     <br>
@@ -189,6 +217,45 @@
         console.log(getTextTest); //  得到 純文字
         // 設定
         $('#setText').text('<b>設定純文字，成功</b>'); // <b>設定純文字，成功</b>
+        
+        // 插入內容
+        // append : 加在元素內部的最後面
+        $('#setInserting').append('world.');
+        // prepend : 加在元素內部的最前面
+        $('#setInserting').prepend('When ');
+        // after : 元素外部的最後面
+        $('#setInserting').after('<b>apple</b>');
+        // before : 元素外部的最前面
+        $('#setInserting').before('<b>bee</b>');
+
+        // *如果裡面放的是jQuery或是DOM則代表 "移動" 他們 !
+        // append
+        $('#moveElement').append($('#moveTarget')); // I am apple
+        // prepend
+        $('#moveElement').prepend($('#moveTarget')); // apple I am
+        // after
+        $('#moveElement').after($('#moveTarget')); //  I am
+                                                   //  apple (換行了)
+        // before
+                                                    //  apple
+        $('#moveElement').before($('#moveTarget')); //  I am (換行了)
+
+        // 包起來 .wrap()
+        $('.inner').wrap('<div class="new"></div>'); //.inner的元素
+        // .wrapAll() 
+        $('.inner').wrap('<div class="newV2"></div>'); // 包在最外面
+        // .weapInner()
+        $('.inner').wrap('<div class="newV3"></div>'); // 包在最外面
+
+        // .empty()
+        // $('.h1').empty();
+        // .remove()
+        $('.h1').remove();
+
+        
+        
+        
+
 
         
         
