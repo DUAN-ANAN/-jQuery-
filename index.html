@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.js" type="text/javascript"></script> <!-- 引用 -->
+    <title>Document</title>
+</head>
+<style>
+    .getGreen{
+        color: greenyellow;
+    }
+    .bigFonts{
+        font-size: 60px;
+    }
+    /* - */
+    .getBlueAndBig{
+        font-size: 30px;
+        color: blue;
+    }
+</style>
+<body>
+
+    <div>
+        <input id="apple" type="button" value="text">
+    </div>
+
+    <p>測試選擇器</p>
+
+    <div class="testSelector">
+        <h1 id="testId">test</h1>
+        <h5>test</h5>
+        <h5>test</h5>
+        <h5>test</h5>
+        <h5>test</h5>
+    </div>
+
+    <div>
+        <em id="testAddClass"> testAddClass </em> 
+        <br>
+        <br>
+        <b id="testRemoveClass" class="getBlueAndBig"> testRemoveClass </b>
+    </div>
+
+    <!-- 取得value或是設定value -->
+    <select name="cars" id="myCars">
+        <option value="Benz">賓士</option>
+        <option value="Audi">奧迪</option>
+        <option value="Ferrei">法拉利</option>
+    </select>
+    <br>
+    <br>
+
+    <input id="getValue" type="text" value="取得value成功">
+    <input id="setValue" type="text">
+
+    <br>
+    <br>
+    <hr>
+
+    <div id="setHeightAndWidth" style="background-color: blueviolet;">
+        <p>setHeightAndWidth</p>
+        <p>設定高和寬</p>
+    </div>
+
+    <h1 id="testOffset">測試偏移量</h1>
+
+    <div id="eqSelector">
+        <h1>過濾元素，選擇第三個p標籤</h1>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+    <hr>
+    <div >
+        <p>父子關係選擇器</p>
+        <ol>
+            <li>父子關係</li>
+            <li>父子關係</li>
+            <li>父子關係</li>
+            <li>父子關係</li>
+        </ol>        
+    </div>
+    
+    <hr>
+
+    <div>
+        <p id="findBrother"><b>Hello</b>World.</p>
+        <input id="setFindBrother" type="text">
+    </div>
+    <hr>
+    <div id="setHtml">
+        <p> 得到 html </p>
+    </div>
+    <hr>
+    <div id="setText">
+        <p> 得到 純文字 </p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <script type="text/javascript">
+        // 10. 
+        // $(function(){
+        //     alert("test jquery.");
+
+        // })
+
+        // 20. 
+        // $('#apple').click(function(){
+        //     $('#apple').css('background-color','green');
+        //     $('#apple').css('font-size','50px');
+
+        // } );
+
+        // 20-1.可以變成一行(串接)
+        $('#apple').click(function(){
+            $('#apple').css('background-color','pink').css('font-size','50px');
+        });
+
+            
+        // 30. 選擇器
+        // $('元素') , $('#id') , $('.class')
+        $('p').css('font-size','50px');
+        $('#testId').css('color','blue');
+        $('.testSelector').css('background-color','red');
+
+        var bee =  $('h5').length;
+        // $(function(){
+        //     alert(bee); //  返回 4 
+        // })
+
+        // 40. 屬性 attribute
+        $('#testAddClass').addClass('getGreen bigFonts');
+        $('#testRemoveClass').removeClass('getBlueAndBig');
+
+        // 取得value的值 , 常用
+        var TestGetValue = $('#getValue').val();
+        console.log(TestGetValue); // 成功抓到
+        // 設定value
+        $('#setValue').val('設定value成功');
+
+        // 設定 hieght 和 width
+        $('#setHeightAndWidth').width(500);
+        $('#setHeightAndWidth').height(200);
+        
+        // 取得元素於視窗的偏移量
+        var myOffset = $('#testOffset').offset();
+        console.log("距離左邊："+ myOffset.left + "，距離上面：" + myOffset.top);
+
+        // 過濾元素 .eq(index)
+        var eqSelector =  $('#eqSelector').eq();
+        console.log(eqSelector);
+
+        // 父子關係 .parent()
+        $('li').parent().css('color','orange');
+        // 所有祖先 .parents()
+        // $('li').parents().css('color','pink'); 
+        // 小孩 .children(selectir)
+        $('#eqSelector').children('p').css('color','pink'); 
+
+        // .find(selector)
+        var findTest =  $('#findBrother').find('b');
+        var findTest_2 = $('b','#findBrother'); // 同樣意思不同寫法
+
+        // $('#setFindBrother').val(findTest); //// [object Object]
+        $('#setFindBrother').val(findTest_2); //// [object Object]
+
+        console.log(findTest);
+
+        // .html() 類似 innerHtml
+        // 取得
+        var getHtmlTest = $('#setHtml').html();
+        console.log(getHtmlTest); //  <p> 得到 html </p>
+        // 設定
+        $('#setHtml').html('<b>設定html成功</b>');
+
+        // .text() 得到純文字
+        // 取得
+        var getTextTest = $('#setText').text();
+        console.log(getTextTest); //  得到 純文字
+        // 設定
+        $('#setText').text('<b>設定純文字，成功</b>'); // <b>設定純文字，成功</b>
+
+        
+        
+        
+        
+
+
+      
+
+
+       
+
+
+
+
+        
+
+
+
+
+
+    </script>
+</body>
+</html>
